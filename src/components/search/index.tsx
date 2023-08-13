@@ -8,14 +8,19 @@ const Search = () => {
   // }, []);
 
   return (
-    <div className='date'>
-      <div className='month'>
-        <span className="month">{moment().format('MMMM yyyy').toLowerCase()}</span>
+    <>
+      <div className='date'>
+        <div className='month'>
+          <span className="month">{moment().format('MMMM yyyy').toLowerCase()}</span>
+        </div>
+        <div className='day'>
+          {moment().format('dddd DD, hh:mm A').toLowerCase()}
+        </div>
       </div>
-      <div className='day'>
-        {moment().format('dddd DD, hh:mm A').toLowerCase()}
+      <div className='inputField'>
+        <input type="text" placeholder='Buscar ciudad'/>
       </div>
-    </div>
+    </>
 
   );
 
