@@ -60,12 +60,9 @@ export const useWeatherApp = () => {
     }
   }
 
-  const useAppValue = {
-    handle: { setLocation, setCurrentWeather, handleSelectChange, setNewUbication, setSearchValue, getLocation },
-    value: { location, currentWeather, newUbication, searchValue, selectOptions }
+  return {
+    setLocation, setCurrentWeather, handleSelectChange, setNewUbication, setSearchValue, getLocation,
+    location, currentWeather, newUbication, searchValue, selectOptions 
   }
-
-  return useAppValue ;
-
 }
 

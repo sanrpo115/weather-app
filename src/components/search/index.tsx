@@ -5,9 +5,11 @@ import moment from 'moment';
 import 'moment/locale/es-mx';
 import "./styles.scss";
 import { useWeatherApp } from '../../hooks/useWeatherApp';
+import { WeatherAppContext } from '../../context/context';
+import { useContext } from 'react';
 
 const Search = () => {
-  const {  handle: { handleSelectChange }, value: { selectOptions } } = useWeatherApp();
+  const { handleSelectChange, selectOptions } = useContext(WeatherAppContext);
   
   const promiseOptions = (_: any, callback: (options: any) => void) => {
     setTimeout(() => {

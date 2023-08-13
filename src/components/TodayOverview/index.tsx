@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { helpSendRequest } from '../../helpers/helpSendRequest';
 import { useWeatherApp } from '../../hooks/useWeatherApp';
+import { WeatherAppContext } from '../../context/context';
 
 const TodayOverview = () => {
-  const { handle: { setCurrentWeather }, value: { currentWeather, location } } = useWeatherApp();
+  const { setCurrentWeather, currentWeather, location } = useContext(WeatherAppContext);
 
   useEffect(() => {
     console.log("estado", location)
