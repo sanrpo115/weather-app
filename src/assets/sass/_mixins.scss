@@ -1,0 +1,74 @@
+// mixin
+@mixin truncate($font-size, $line-height, $lines-to-show) {
+    font-size: $font-size;
+    display: -webkit-box; /* Fallback for non-webkit */
+    max-height: $font-size * $line-height * $lines-to-show; /* Fallback for non-webkit */
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin gradient($c-start, $c-stop) {
+    background: $c-start;
+    background: -webkit-linear-gradient(139deg, $c-start, $c-stop);
+    background: linear-gradient(
+        139deg,
+        $c-start,
+        $c-stop
+    );
+}
+
+@mixin scroll($background, $color) {
+    &::-webkit-scrollbar {
+        width: 8px;
+        margin-right: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: $background;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $color;
+        outline: 2px solid $background;
+        border-radius: 10px;
+    }
+}
+@mixin scrollHor($background, $color, $height) {
+    &::-webkit-scrollbar {
+        height: $height;
+        margin-right: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: $background;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $color;
+        outline: 2px solid $background;
+        border-radius: 10px;
+    }
+}
+
+@mixin fontAwesome($codeIcon) {
+    content: $codeIcon;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Pro", Arial, Helvetica, sans-serif;
+    line-height: normal;
+}
+
+@mixin fontAwesomePSEUDO($size, $textAlign) {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-size: $size;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Pro", Arial, Helvetica, sans-serif;
+    line-height: normal;
+    text-align: $textAlign;
+}

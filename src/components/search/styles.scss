@@ -1,0 +1,24 @@
+@import "../../assets/sass/_variables";
+
+.date {
+  padding: 10px 20px;
+  .month {
+    display: block;
+    width: 100%;
+    span {
+      font-size: 40px;
+      font-family: $f-ppal-b;
+      color: $c-bl;
+      text-transform: capitalize;
+    }
+  }
+  .day {
+    display: block;
+    width: 100%;
+    p {
+      font-size: 18px;
+      color: $c-dr;
+      text-transform: capitalize;
+    }
+  }
+}

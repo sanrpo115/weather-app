@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { helpSendRequest } from '../../helpers/helpSendRequest';
+import { useWeatherApp } from '../../hooks/useWeatherApp';
 
 const TodayOverview = () => {
-  const [currentWeather, setCurrentWeather] = useState()
+  const { 
+    handle: { setCurrentWeather },
+    value: { currentWeather }
+  } = useWeatherApp();
 
   useEffect(() => {
     init();
@@ -21,7 +25,7 @@ const TodayOverview = () => {
 
   return (
     <>
-      Resumen
+      Tiempo actual
       {JSON.stringify(currentWeather)}
     </>
   )
