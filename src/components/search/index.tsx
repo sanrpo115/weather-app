@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Select from 'react-select';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,11 +10,20 @@ import { useWeatherApp } from '../../hooks/useWeatherApp';
 import { handlePreventKeys } from '../../utils/index';
 
 const Search = () => {
+  const {  handle: { handleSelectChange }, value: { selectOptions } } = useWeatherApp();
+  const [isClearable, setIsClearable] = useState(true);
+  const [isSearchable, setIsSearchable] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRtl, setIsRtl] = useState(false);
 
-  const {  handle: { handleInputChange } } = useWeatherApp();
   
   // useEffect(() => {
   // }, []);
+
+  const onChange = (event: any) => {
+    console.log("change", event)
+  }
 
   return (
     <>
@@ -30,12 +40,19 @@ const Search = () => {
         </Col>
         <Col>
           <div className='inputField'>
-            <Form.Control
-              type="text"
-              id="searchInput"
-              aria-describedby="Search Field"
-              placeholder="Buscar ubicación"
-              onChange={handleInputChange}
+          <Select
+              className="basic-single"
+              classNamePrefix="select"
+              isDisabled={isDisabled}
+              isLoading={isLoading}
+              isClearable={isClearable}
+              isRtl={isRtl}
+              isSearchable={isSearchable}
+              name="cities"
+              options={selectOptions}
+              onInputChange={(e:any) => {  
+                handleSelectChange(e)}
+              }
             />
             
           </div>
