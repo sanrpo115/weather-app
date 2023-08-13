@@ -2,18 +2,21 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/es-mx';
 
-
 const Search = () => {
-  const [date, setDate] = useState(moment(new Date).format('MMMM, dddd DD, yyyy'));
   
-  useEffect(() => {
-    console.log(date)
-  }, []);
+  // useEffect(() => {
+  // }, []);
 
   return (
-    <>
-      Fecha y Buscador
-    </>
+    <div className='date'>
+      <div className='month'>
+        <span className="month">{moment().format('MMMM yyyy').toLowerCase()}</span>
+      </div>
+      <div className='day'>
+        {moment().format('dddd DD, hh:mm A').toLowerCase()}
+      </div>
+    </div>
+
   );
 
 }
