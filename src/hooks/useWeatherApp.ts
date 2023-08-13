@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { helpSendRequest } from '../helpers/helpSendRequest';
 
 export const useWeatherApp = () => {
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState({latitude: 0, longitude: 0});
   const [currentWeather, setCurrentWeather] = useState();
   const [newUbication, setNewUbication] = useState({});
   const [searchValue, setSearchValue] = useState({prev: '', new: ''});
@@ -20,13 +20,27 @@ export const useWeatherApp = () => {
   const handleSelectChange = (event: any) => {
     const oldValue = searchValue.new
     let newValue = event;
-    const regex = /^[A-Za-z\s]*$/; // Expresión regular para letras en mayúsculas, minúsculas y espacios
+    const regex = /^[A-Za-z\s]*$/;
     if (newValue === '' || regex.test(newValue)) {
       newValue = newValue.toUpperCase();
       console.log(newValue)
       setSearchValue({prev: oldValue, new: newValue});
     }
   };
+
+  const getLocation = () => {
+		if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+				console.log("Geolocation successfully :::>> ", position.coords)
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+	}
 
   const consultCities = async () => {
     const options: any = [];
@@ -47,7 +61,7 @@ export const useWeatherApp = () => {
   }
 
   const useAppValue = {
-    handle: { setLocation, setCurrentWeather, handleSelectChange, setNewUbication, setSearchValue },
+    handle: { setLocation, setCurrentWeather, handleSelectChange, setNewUbication, setSearchValue, getLocation },
     value: { location, currentWeather, newUbication, searchValue, selectOptions }
   }
 

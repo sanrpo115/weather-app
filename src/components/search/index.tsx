@@ -1,27 +1,15 @@
-import { useEffect, useState } from 'react';
-import Select from 'react-select';
 import AsyncSelect  from 'react-select/async';
-import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import moment from 'moment';
 import 'moment/locale/es-mx';
 import "./styles.scss";
 import { useWeatherApp } from '../../hooks/useWeatherApp';
-import { handlePreventKeys } from '../../utils/index';
 
 const Search = () => {
   const {  handle: { handleSelectChange }, value: { selectOptions } } = useWeatherApp();
-
   
-  // useEffect(() => {
-  // }, []);
-
-  const onChange = (event: any) => {
-    console.log("change", event)
-  }
-  
-  const promiseOptions = (inputvalue: string, callback: (options: any) => void) => {
+  const promiseOptions = (_: any, callback: (options: any) => void) => {
     setTimeout(() => {
       console.log("resolve", selectOptions)
       callback(() => { return selectOptions });

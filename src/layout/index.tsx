@@ -1,28 +1,14 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Search from '../components/search';
+import Search from '../components/Search';
 import TodayOverview from '../components/TodayOverview';
 import { useWeatherApp } from '../hooks/useWeatherApp';
 
 const Layout = () => {
 
-	const { handle: { setLocation} } = useWeatherApp();
-
-	const getLocation = () => {
-		if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        });
-				console.log("Geolocation successfully :::>> ", position.coords)
-      });
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-	}
+	const { handle: { getLocation }, value: { location } } = useWeatherApp();
 
 	useEffect(() => {
     getLocation();
@@ -30,13 +16,17 @@ const Layout = () => {
 
 	return (
 		<Container>
-			<Row>
-				<Col className="" md={8}>
-					<Search />
-					<TodayOverview />
-				</Col>
-				<Col className="" md={4}>Sidebar</Col>
-			</Row>
+			{location.latitude !== 0 && 
+				<Row>
+					<Col className="" md={8}>
+						<Search />
+						{/* https://github.com/vercel/next.js/issues/42292 */}
+						{/* @ts-expect-error Server Component */}
+						<TodayOverview />
+					</Col>
+					<Col className="" md={4}>Sidebar</Col>
+				</Row>
+			}
 		</Container>
 	);
 
