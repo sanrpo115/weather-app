@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import AsyncSelect  from 'react-select/async';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,11 +12,6 @@ import { handlePreventKeys } from '../../utils/index';
 
 const Search = () => {
   const {  handle: { handleSelectChange }, value: { selectOptions } } = useWeatherApp();
-  const [isClearable, setIsClearable] = useState(true);
-  const [isSearchable, setIsSearchable] = useState(true);
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isRtl, setIsRtl] = useState(false);
 
   
   // useEffect(() => {
@@ -23,6 +19,13 @@ const Search = () => {
 
   const onChange = (event: any) => {
     console.log("change", event)
+  }
+  
+  const promiseOptions = (inputvalue: string, callback: (options: any) => void) => {
+    setTimeout(() => {
+      console.log("resolve", selectOptions)
+      callback(() => { return selectOptions });
+    }, 1000);
   }
 
   return (
@@ -40,21 +43,17 @@ const Search = () => {
         </Col>
         <Col>
           <div className='inputField'>
-          <Select
+            <AsyncSelect 
               className="basic-single"
               classNamePrefix="select"
-              isDisabled={isDisabled}
-              isLoading={isLoading}
-              isClearable={isClearable}
-              isRtl={isRtl}
-              isSearchable={isSearchable}
+              isClearable={true}
+              isSearchable={true}
               name="cities"
-              options={selectOptions}
+              loadOptions={promiseOptions}
               onInputChange={(e:any) => {  
                 handleSelectChange(e)}
               }
             />
-            
           </div>
         </Col>
       </Row>
