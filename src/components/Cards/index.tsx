@@ -3,7 +3,7 @@ import { WiHumidity, WiBarometer, WiStrongWind, WiHot } from "react-icons/wi";
 const Cards = ({ data }) => {
 
   return (
-    <div className="cards-content">
+    <div className="stats-content">
       <div className='card'>
         <WiHumidity className='icon'/>
         <div className="info">
@@ -14,7 +14,7 @@ const Cards = ({ data }) => {
       <div className='card'>
           <WiBarometer className='icon' />
           <div className="info">
-            <p className='title'>Presion</p>
+            <p className='title'>Presión</p>
             <span className='data'>{data.pressure_mb} hpa</span>
           </div>
         </div>

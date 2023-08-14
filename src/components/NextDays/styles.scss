@@ -1,0 +1,71 @@
+@import "../../assets/sass/_variables";
+
+.cards-content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 0;
+  .next-card {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .3);
+    }
+    .date {
+      width: 100%;
+      color: #8d8d8d;
+      font-family: $f-ppal-m;
+      font-size: 20px;
+      text-transform: capitalize;
+      padding: 5px 0;
+    }
+    .info {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: row;
+      .icon {
+        .img {
+          width: 80px;
+        }
+      }
+      .temp {
+        .temp_data {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          flex-direction: row;
+          font-family: $f-ppal-b;
+          align-items: center;
+          &.min {
+            .icon {
+              font-size: 40px;
+            }
+            p {
+              font-size: 20px;
+            }
+          }
+          &.max {
+            .icon {
+              font-size: 40px;
+            }
+            p {
+              font-size: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
