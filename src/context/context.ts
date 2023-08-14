@@ -9,11 +9,13 @@ const initContext = {
   setSearchValue: () => { },
   getLocation: () => { },
   setSelectOptions: () => { },
+  setAstronomy: () => {},
   location: { latitude: 0, longitude: 0 },
   currentWeather: { },
   newUbication: { },
   searchValue: {prev: '', new: ''},
-  selectOptions: []
+  selectOptions: [],
+  astronomy: { }
 }
 
 interface WeatherApp {
@@ -24,11 +26,13 @@ interface WeatherApp {
   setSelectOptions: React.Dispatch<React.SetStateAction<any[]>>;
   handleSelectChange: (e: any) => void;
   getLocation: () => any;
+  setAstronomy: React.Dispatch<(prevState: undefined) => undefined>;
   location: any;
   currentWeather: any;
   newUbication: any;
   searchValue: any;
   selectOptions: Array<any>;
+  astronomy: any
 }
 
 export const WeatherAppContext = createContext<WeatherApp>(initContext);

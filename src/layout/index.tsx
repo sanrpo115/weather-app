@@ -20,22 +20,15 @@ const Layout = () => {
 
 	return (
 		<Container>	
-			
-					<Row>
-						<Col className="" md={8}>
-							<Search />
-							{/* https://github.com/vercel/next.js/issues/42292 */}
-							{/* 
-							@ts-expect-error Server Component 
-							ds
-							*/}
-							<TodayOverview />
-						</Col>
-						<Col className="" md={4}>
-							<SideBar />
-						</Col>
-					</Row>
-			
+			<Row>
+				<Col className="" md={8}>
+					<Search />
+					<TodayOverview />
+				</Col>
+				<Col className="" md={4}>
+					<SideBar />
+				</Col>
+			</Row>
 		</Container>
 	);
 

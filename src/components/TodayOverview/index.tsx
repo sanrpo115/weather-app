@@ -7,7 +7,6 @@ const TodayOverview = () => {
   const { setCurrentWeather, currentWeather, location } = useContext(WeatherAppContext);
 
   useEffect(() => {
-    console.log("estado", location)
     if (location.latitude !== 0 && location.longitude !== 0) {
       init();
     }
@@ -15,7 +14,7 @@ const TodayOverview = () => {
 
   const init = async () => {
     const response = await helpSendRequest(
-      `${process.env.REACT_APP_ENDPOINT}/current.json?q=${location.latitude},${location.longitude}` , 
+      `${process.env.REACT_APP_ENDPOINT}/current.json?q=${location.latitude},${location.longitude}&lang=es` , 
       { 'X-RapidAPI-Key': process.env.REACT_APP_X_RAPID_KEY, 'X-RapidAPI-Host': process.env.REACT_APP_X_RAPID_HOST },
       'GET',
       {}

@@ -4,6 +4,7 @@ import { helpSendRequest } from '../helpers/helpSendRequest';
 export const useWeatherApp = () => {
   const [location, setLocation] = useState({latitude: 0, longitude: 0});
   const [currentWeather, setCurrentWeather] = useState();
+  const [astronomy, setAstronomy] = useState();
   const [newUbication, setNewUbication] = useState({});
   const [searchValue, setSearchValue] = useState({prev: '', new: ''});
   const [selectOptions, setSelectOptions] = useState([]);
@@ -61,8 +62,8 @@ export const useWeatherApp = () => {
   }
 
   return {
-    setLocation, setCurrentWeather, handleSelectChange, setNewUbication, setSearchValue, getLocation, setSelectOptions,
-    location, currentWeather, newUbication, searchValue, selectOptions 
+    setLocation, setCurrentWeather, handleSelectChange, setNewUbication, setSearchValue, getLocation, setSelectOptions, setAstronomy,
+    location, currentWeather, newUbication, searchValue, selectOptions, astronomy
   }
 }
 
