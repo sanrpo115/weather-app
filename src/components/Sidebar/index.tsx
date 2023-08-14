@@ -7,13 +7,17 @@ import 'moment/locale/es-mx';
 import './styles.scss';
 
 const SideBar = () => {
-  const [astroResponse, setAstroResponse] = useState({ astro: {}});
-
   const { currentWeather, location } = useContext(WeatherAppContext);
+  const [astroResponse, setAstroResponse] = useState({ astro: {}});
+  const [isDay, setIsDay] = useState(0);
 
   useEffect(() => {
     if (location.latitude !== 0 && location.longitude !== 0) {
       init();
+      if(currentWeather) {
+        console.log("Is Day?", currentWeather.current.is_day);
+        setIsDay(currentWeather.current.is_day);
+      }
     }
   }, [location.latitude]);
 
@@ -28,7 +32,7 @@ const SideBar = () => {
   };
 
   return (
-    currentWeather && location && <div className={`side-content is-night`}>
+    currentWeather && location && <div className={`side-content ${isDay === 1 ? 'is-day' : 'is-night'}`}>
       <div className="top-sidebar">
         <div className="geotime-content">
           <div className="location">

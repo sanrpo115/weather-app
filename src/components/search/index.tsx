@@ -12,7 +12,6 @@ const Search = () => {
   
   const promiseOptions = (_: any, callback: (options: any) => void) => {
     setTimeout(() => {
-      console.log("resolve", selectOptions)
       callback(() => { return selectOptions });
     }, 1000);
   }

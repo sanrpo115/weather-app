@@ -11,7 +11,6 @@ export const useWeatherApp = () => {
   useEffect(() => {
     if(searchValue.new.length >= 3 && searchValue.prev !== searchValue.new) {
       setTimeout(() => {
-        console.log("Buscando");
         consultCities();
       }, 1000)
     }
@@ -50,12 +49,10 @@ export const useWeatherApp = () => {
       'GET',
       {}
     );
-    console.log("Respuesta buscador", response);
     if (response !== null) {
       response.forEach((elm: any) => {
         options.push({label: `${elm.name}, ${elm.region}, ${elm.country}`, value: `${elm.lat}, ${elm.lon}`,})
       });
-      console.log('options', options)
       setSelectOptions(options);
     }
   }

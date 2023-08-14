@@ -1,8 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { helpSendRequest } from '../../helpers/helpSendRequest';
 import { WeatherAppContext } from '../../context/context';
-import { WiHumidity, WiBarometer, WiStrongWind, WiHot } from "react-icons/wi";
+import Cards from '../Cards';
 import './styles.scss';
+import NextDays from '../NextDays';
 
 const TodayOverview = () => {
   const { setCurrentWeather, currentWeather, location } = useContext(WeatherAppContext);
@@ -27,36 +28,8 @@ const TodayOverview = () => {
   return (
     currentWeather && <div className="overview-content">
       <h3>Resumen de hoy</h3>
-      <div className="cards-content">
-        <div className='card'>
-          <WiHumidity className='icon'/>
-          <div className="info">
-            <p className='title'>Humedad</p>
-            <span className='data'>{currentWeather.current.humidity}%</span>
-          </div>
-        </div>
-        <div className='card'>
-          <WiBarometer className='icon' />
-          <div className="info">
-            <p className='title'>Presion</p>
-            <span className='data'>{currentWeather.current.pressure_mb} hpa</span>
-          </div>
-        </div>
-        <div className='card'>
-          <WiStrongWind className='icon' />
-          <div className="info">
-            <p className='title'>Velocidad del viento</p>
-            <span className='data'>{currentWeather.current.wind_kph} km/h</span>
-          </div>
-        </div>
-        <div className='card'>
-          <WiHot className='icon' />
-          <div className="info">
-            <p className='title'>Índice UV</p>
-            <span className='data'>{currentWeather.current.uv}</span>
-          </div>
-        </div>
-      </div>
+      <Cards data={currentWeather.current} />
+      <NextDays />
     </div>
   )
 }
