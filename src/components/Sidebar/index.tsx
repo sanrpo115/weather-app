@@ -10,7 +10,7 @@ const SideBar = () => {
 
   return (
     currentWeather && location && <>
-
+    {JSON.stringify(location)}
     </>
   );
 

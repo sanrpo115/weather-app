@@ -5,9 +5,10 @@ import { WeatherAppProvider } from './context/context';
 import { useWeatherApp } from './hooks/useWeatherApp';
 
 function App() {
+
   const context = useWeatherApp();
 
-  return (
+  return (    
     <WeatherAppProvider value={context}>
       <Layout />
     </WeatherAppProvider>

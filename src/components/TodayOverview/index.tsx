@@ -29,23 +29,19 @@ const TodayOverview = () => {
       Tiempo actual
       <div>
         <p>Humedad</p>
-        {/* @ts-expect-error Server Component */}
         {currentWeather.current.humidity}
       </div>
       <div>
         <p>Presion</p>
-        {/* @ts-expect-error Server Component */}
         {currentWeather.current.pressure_mb}
       </div>
       <div>
         <p>Viento</p>
-        {/* @ts-expect-error Server Component */}
         {currentWeather.current.wind_kph}
       </div>
       <div>
         <p>UV Index</p>
         {/* https://github.com/vercel/next.js/issues/42292 */}
-        {/* @ts-expect-error Server Component */}
         {currentWeather.current.uv}
       </div>
     </>
