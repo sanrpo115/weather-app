@@ -44,7 +44,7 @@ const SideBar = () => {
             
           </div>
           <div className="temp">
-            <span>{currentWeather.current.temp_c}</span>
+            <span>{currentWeather.current.temp_c}° C</span>
             <h3 className="condition">{currentWeather.current.condition.text}</h3>
           </div>
         </div>
@@ -53,8 +53,6 @@ const SideBar = () => {
         <Stages data={astroResponse.astro}/>
       </div>
       }
-
-      {JSON.stringify(currentWeather)}
     </>
   );
 
