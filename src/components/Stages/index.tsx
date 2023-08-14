@@ -5,8 +5,6 @@ import './styles.scss';
 
 const Stages = ({ data }) => {
 
-  console.log('stages', data);
-
   const getHoursAgo = (timeString: string): string => {
     const now = moment();
     const format = "hh:mm A";

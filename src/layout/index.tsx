@@ -21,11 +21,11 @@ const Layout = () => {
 	return (
 		<Container>	
 			<Row>
-				<Col className="" md={7}>
+				<Col className="" md={8}>
 					<Search />
 					<TodayOverview />
 				</Col>
-				<Col className="" md={5}>
+				<Col className="side" md={4}>
 					<SideBar />
 				</Col>
 			</Row>

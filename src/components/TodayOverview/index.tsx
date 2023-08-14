@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { helpSendRequest } from '../../helpers/helpSendRequest';
-import { useWeatherApp } from '../../hooks/useWeatherApp';
 import { WeatherAppContext } from '../../context/context';
+import { WiHumidity, WiBarometer, WiStrongWind, WiHot } from "react-icons/wi";
+import './styles.scss';
 
 const TodayOverview = () => {
   const { setCurrentWeather, currentWeather, location } = useContext(WeatherAppContext);
@@ -24,25 +25,39 @@ const TodayOverview = () => {
   };
 
   return (
-    currentWeather && <>
-      Tiempo actual
-      <div>
-        <p>Humedad</p>
-        {currentWeather.current.humidity}
+    currentWeather && <div className="overview-content">
+      <h3>Resumen de hoy</h3>
+      <div className="cards-content">
+        <div className='card'>
+          <WiHumidity className='icon'/>
+          <div className="info">
+            <p className='title'>Humedad</p>
+            <span className='data'>{currentWeather.current.humidity}%</span>
+          </div>
+        </div>
+        <div className='card'>
+          <WiBarometer className='icon' />
+          <div className="info">
+            <p className='title'>Presion</p>
+            <span className='data'>{currentWeather.current.pressure_mb} hpa</span>
+          </div>
+        </div>
+        <div className='card'>
+          <WiStrongWind className='icon' />
+          <div className="info">
+            <p className='title'>Velocidad del viento</p>
+            <span className='data'>{currentWeather.current.wind_kph} km/h</span>
+          </div>
+        </div>
+        <div className='card'>
+          <WiHot className='icon' />
+          <div className="info">
+            <p className='title'>Índice UV</p>
+            <span className='data'>{currentWeather.current.uv}</span>
+          </div>
+        </div>
       </div>
-      <div>
-        <p>Presion</p>
-        {currentWeather.current.pressure_mb}
-      </div>
-      <div>
-        <p>Viento</p>
-        {currentWeather.current.wind_kph}
-      </div>
-      <div>
-        <p>UV Index</p>
-        {currentWeather.current.uv}
-      </div>
-    </>
+    </div>
   )
 }
 

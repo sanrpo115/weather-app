@@ -2,20 +2,15 @@
 @import "assets/sass/load-fonts";
 @import "assets/sass/variables";
 
-.body {
+body {
   background-color: #9f9f9f4f;
 }
 
 .container {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  
+  margin-top: 60px;
+  background-color: $c-wh;
 }
 
-.container1 {
-  background: red;
-}
-
-.container2 {
-  background: blue;
+.side {
+  padding-right: 0;
 }
