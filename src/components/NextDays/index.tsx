@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { WeatherAppContext } from "../../context/context";
 import { helpSendRequest } from "../../helpers/helpSendRequest";
 import { WiDirectionUpRight, WiDirectionDownLeft } from "react-icons/wi";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import ModalPredict from "../ModalPredict";
 import moment from 'moment';
 import 'moment/locale/es-mx';
 import './styles.scss';
@@ -12,6 +11,7 @@ const NextDays = () => {
   const { location } = useContext(WeatherAppContext);
   const [forecast, setForecast] = useState<any>({});
   const [show, setShow] = useState(false);
+  const [dataProp, setDataProp] = useState({});
 
   useEffect(() => {
     if (location.latitude !== 0 && location.longitude !== 0) {
@@ -37,7 +37,11 @@ const NextDays = () => {
     return newDate;
   }
 
-  const handleShow = () => setShow(true);
+  const handleShow = (item: any) => {
+    setDataProp(item);
+    setShow(true)
+  };
+
   const handleClose = () => setShow(false);
 
   return (
@@ -47,7 +51,7 @@ const NextDays = () => {
         {forecast.map((item: any, i: number) => {
           if (i !== 0) {
             return (
-              <div className="next-card" key={`next-card-${i}`} onClick={handleShow}>
+              <div className="next-card" key={`next-card-${i}`} onClick={() => handleShow(item)}>
                 <div className="date">{getDate(item.date)}</div>
                 <div className="info">
                   <div className="icon">
@@ -69,20 +73,7 @@ const NextDays = () => {
           }
         })}
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ModalPredict data={dataProp} openModal={show} closeModal={handleClose}/>
     </>  
   )
 
