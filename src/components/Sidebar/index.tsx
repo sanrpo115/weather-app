@@ -54,7 +54,7 @@ const SideBar = () => {
         </div>
       </div>
       {astroResponse && <div className="astronomy-content">
-        <Stages data={astroResponse.astro}/>
+        <Stages data={astroResponse.astro} fromModal={false}/>
       </div>
       }
     </div>

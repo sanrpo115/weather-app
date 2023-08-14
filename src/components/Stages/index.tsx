@@ -3,7 +3,7 @@ import moment from 'moment';
 import 'moment/locale/es-mx';
 import './styles.scss';
 
-const Stages = ({ data }) => {
+const Stages = ({ data, fromModal }) => {
 
   const getHoursAgo = (timeString: string): string => {
     const now = moment();
@@ -16,7 +16,7 @@ const Stages = ({ data }) => {
   return (
     <>
       <div className="stages">
-        <h3>Amanecer y Atardecer</h3>
+        {fromModal && <h3>Amanecer y Atardecer</h3>}
         <ul className="list-stages">
           <li className="stage">
             <div className="left-info">
@@ -26,9 +26,9 @@ const Stages = ({ data }) => {
                 <span className="time">{data.sunrise}</span>
               </div>
             </div>
-            <div className="time-ago">
+            {fromModal && <div className="time-ago">
               {getHoursAgo(data.sunrise)}
-            </div>
+            </div>}
           </li>
           <li className="stage">
             <div className="left-info">
@@ -38,9 +38,9 @@ const Stages = ({ data }) => {
                 <span className="time">{data.sunset}</span>
               </div>
             </div>
-            <div className="time-ago">
+            {fromModal && <div className="time-ago">
               {getHoursAgo(data.sunset)}
-            </div>
+            </div>}
           </li>
         </ul>
       </div>
