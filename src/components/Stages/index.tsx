@@ -21,24 +21,24 @@ const Stages = ({ data }) => {
         <h3>Amanecer y Atardecer</h3>
         <ul className="list-stages">
           <li className="stage">
-            <div className="icon">
-              <WiHorizonAlt />
-            </div>
-            <div className="info">
-              <span className="phase">Amanecer</span>
-              <span className="time">{data.sunrise}</span>
+            <div className="left-info">
+              <WiHorizonAlt className="icon"/>
+              <div className="data">
+                <span className="phase">Amanecer</span>
+                <span className="time">{data.sunrise}</span>
+              </div>
             </div>
             <div className="time-ago">
               {getHoursAgo(data.sunrise)}
             </div>
           </li>
           <li className="stage">
-            <div className="icon">
-              <WiHorizon />
-            </div>
-            <div className="info">
-              <span className="phase">Atardecer</span>
-              <span className="time">{data.sunset}</span>
+            <div className="left-info">
+              <WiHorizon className="icon"/>
+              <div className="data">
+                <span className="phase">Atardecer</span>
+                <span className="time">{data.sunset}</span>
+              </div>
             </div>
             <div className="time-ago">
               {getHoursAgo(data.sunset)}

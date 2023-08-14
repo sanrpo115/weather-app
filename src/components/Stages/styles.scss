@@ -4,6 +4,50 @@
   width: 100%;
   color: $c-wh;
   font-family: $f-ppal-m;
+  padding: 30px 10px;
   h3 {
+    font-size: 20px;
+  }
+  ul {
+    width: 100%;
+    margin: 30px 0;
+    li {
+      padding: 5px 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      &.stage {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:hover {
+          border-radius: 1px solid #fff;
+        }
+        .left-info {
+          width: 70%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          .icon {
+            font-size: 100px;
+          }
+          .data {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            .phase {
+              display: block;
+              font-family: $f-ppal-r;
+              margin-bottom: 20px;
+            }
+            .time {
+              font-size: 30px;
+            }
+          }
+        }
+      }
+    }
   }
 }

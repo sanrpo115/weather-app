@@ -41,7 +41,7 @@ const SideBar = () => {
         </div>
         <div className="temperature-content">
           <div className="icon">
-            
+            <img src={`https:${currentWeather.current.condition.icon}`} alt={currentWeather.current.condition.text} />
           </div>
           <div className="temp">
             <span>{currentWeather.current.temp_c}° C</span>

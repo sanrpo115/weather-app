@@ -39,6 +39,10 @@
     .temperature-content {
       padding: 0 10px;
       font-family: $f-ppal-m;
+      margin-top: 30px;
+      .icon {
+        display: block;
+      }
       .temp {
         width: 100%;
         display: flex;
