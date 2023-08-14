@@ -14,7 +14,7 @@ const TodayOverview = () => {
 
   const init = async () => {
     const response = await helpSendRequest(
-      `${process.env.REACT_APP_ENDPOINT}/current.json?q=${location.latitude},${location.longitude}&lang=es` , 
+      `${process.env.REACT_APP_ENDPOINT}/current.json?q=${location.latitude},${location.longitude}&lang=${process.env.REACT_APP_LANG}` , 
       { 'X-RapidAPI-Key': process.env.REACT_APP_X_RAPID_KEY, 'X-RapidAPI-Host': process.env.REACT_APP_X_RAPID_HOST },
       'GET',
       {}
@@ -40,7 +40,6 @@ const TodayOverview = () => {
       </div>
       <div>
         <p>UV Index</p>
-        {/* https://github.com/vercel/next.js/issues/42292 */}
         {currentWeather.current.uv}
       </div>
     </>

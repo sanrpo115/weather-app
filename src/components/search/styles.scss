@@ -1,5 +1,12 @@
 @import "../../assets/sass/_variables";
 
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d8d8d8;
+}
 .date {
   padding: 10px 20px;
   .month {
@@ -15,10 +22,27 @@
   .day {
     display: block;
     width: 100%;
+    margin-top: 10px;
     p {
+      font-family: $f-ppal-m;
       font-size: 18px;
       color: $c-dr;
       text-transform: capitalize;
+    }
+  }
+}
+
+.inputField {
+  .basic-single {
+    font-family: $f-ppal-m;
+    font-size: 18px;
+    .select__control {
+      border: none;
+      background-color: #f3f3f3;
+      height: 50px;
+    }
+    .select__menu {
+      background-color: #f3f3f3;
     }
   }
 }

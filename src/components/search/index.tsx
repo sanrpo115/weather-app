@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import moment from 'moment';
 import 'moment/locale/es-mx';
 import "./styles.scss";
-import { useWeatherApp } from '../../hooks/useWeatherApp';
 import { WeatherAppContext } from '../../context/context';
 import { useContext } from 'react';
 
@@ -20,7 +19,7 @@ const Search = () => {
 
   return (
     <>
-      <Row>
+      <Row className='top-bar'>
         <Col>
           <div className='date'>
             <div className='month'>
@@ -36,6 +35,7 @@ const Search = () => {
             <AsyncSelect 
               className="basic-single"
               classNamePrefix="select"
+              placeholder="Buscar ubicación"
               isClearable={true}
               isSearchable={true}
               name="cities"
