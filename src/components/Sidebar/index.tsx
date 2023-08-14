@@ -4,11 +4,12 @@ import { helpSendRequest } from "../../helpers/helpSendRequest";
 import Stages from "../Stages";
 import moment from 'moment';
 import 'moment/locale/es-mx';
+import './styles.scss';
 
 const SideBar = () => {
   const [astroResponse, setAstroResponse] = useState({ astro: {}});
 
-  const { setAstronomy, currentWeather, location, astronomy } = useContext(WeatherAppContext);
+  const { currentWeather, location } = useContext(WeatherAppContext);
 
   useEffect(() => {
     if (location.latitude !== 0 && location.longitude !== 0) {
@@ -24,11 +25,10 @@ const SideBar = () => {
       {}
     );
     setAstroResponse(response.astronomy);
-    console.log('current', response)
   };
 
   return (
-    currentWeather && location && <>
+    currentWeather && location && <div className={`side-content is-night`}>
       <div className="top-sidebar">
         <div className="geotime-content">
           <div className="location">
@@ -53,7 +53,7 @@ const SideBar = () => {
         <Stages data={astroResponse.astro}/>
       </div>
       }
-    </>
+    </div>
   );
 
 }

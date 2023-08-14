@@ -26,13 +26,11 @@ interface WeatherApp {
   setSelectOptions: React.Dispatch<React.SetStateAction<any[]>>;
   handleSelectChange: (e: any) => void;
   getLocation: () => any;
-  setAstronomy: React.Dispatch<(prevState: undefined) => undefined>;
   location: any;
   currentWeather: any;
   newUbication: any;
   searchValue: any;
   selectOptions: Array<any>;
-  astronomy: any
 }
 
 export const WeatherAppContext = createContext<WeatherApp>(initContext);

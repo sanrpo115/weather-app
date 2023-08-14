@@ -1,0 +1,62 @@
+@import "../../assets/sass/_variables";
+
+.side-content {
+  width: 100%;
+  padding: 30px 40px;
+  &.is-day {
+    background: yellow;
+  }
+  &.is-night {
+    background: #4b6cb7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  .top-sidebar {
+    width: 100%;
+    display: block;
+    color: $c-wh;
+    font-family: $f-ppal-m;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #fff;
+    .geotime-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      .location {
+        .name {
+          font-size: 35px;
+        }
+        .region-country {
+          font-family: $f-ppal-r;
+          font-size: 18px;
+        }
+      }
+      .timezone {
+        font-size: 30px;
+      }
+    }
+    .temperature-content {
+      padding: 0 10px;
+      font-family: $f-ppal-m;
+      .temp {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          width: 60%;
+          font-size: 55px;
+        }
+        h3 {
+          &.condition {
+            width: 30%;
+            font-size: 25px;
+            font-family: $f-ppal-r;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
