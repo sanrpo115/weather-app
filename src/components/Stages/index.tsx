@@ -8,9 +8,10 @@ const Stages = ({ data, fromModal }) => {
   const getHoursAgo = (timeString: string): string => {
     const now = moment();
     const format = "hh:mm A";
-    const timeAgo = moment(timeString, format)
-    const diff = Math.abs(moment.duration(now.diff(timeAgo)).hours());
-    return `${!fromModal ? 'Hace' : 'Faltan'} ${diff} ${diff > 1 ? 'horas' : 'hora' }`;
+    const timeAgo = fromModal ? moment(timeString, format).add(1, 'day') : moment(timeString, format);
+    const diff = moment.duration(now.diff(timeAgo)).hours();
+    console.log(moment.duration(now.diff(timeAgo)))
+    return fromModal ? `Faltan ${Math.abs(diff)} ${Math.abs(diff) >= 2 ? 'horas' : 'hora' }` : `${diff > 1 ? 'Hace' : 'Faltan'} ${Math.abs(diff)} ${Math.abs(diff) >= 1 ? 'horas' : 'hora' }`;
   }
 
   return (

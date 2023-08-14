@@ -3,8 +3,8 @@ import { useWeatherApp } from "../hooks/useWeatherApp";
 
 const initContext = {
   setLocation: () => {},
-  setCurrentWeather: (r?: any) => {},
-  handleSelectChange: (e?: any) => {},
+  setCurrentWeather: () => {},
+  handleSelectChange: () => {},
   setNewUbication: () => { },
   setSearchValue: () => { },
   getLocation: () => { },
@@ -12,7 +12,7 @@ const initContext = {
   setAstronomy: () => {},
   location: { latitude: 0, longitude: 0 },
   currentWeather: { },
-  newUbication: { },
+  newUbication: '',
   searchValue: {prev: '', new: ''},
   selectOptions: [],
   astronomy: { }
@@ -21,14 +21,14 @@ const initContext = {
 interface WeatherApp {
   setLocation: React.Dispatch<React.SetStateAction<{ latitude: number; longitude: number; }>>;
   setCurrentWeather: React.Dispatch<(prevState: undefined) => undefined>;
-  setNewUbication: React.Dispatch<React.SetStateAction<{}>>;
+  setNewUbication: React.Dispatch<React.SetStateAction<''>>;
   setSearchValue: React.Dispatch<React.SetStateAction<{ prev: string; new: string; }>>;
   setSelectOptions: React.Dispatch<React.SetStateAction<any[]>>;
   handleSelectChange: (e: any) => void;
   getLocation: () => any;
   location: any;
   currentWeather: any;
-  newUbication: any;
+  newUbication: string;
   searchValue: any;
   selectOptions: Array<any>;
 }

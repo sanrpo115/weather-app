@@ -8,8 +8,6 @@ import './styles.scss';
 
 const ModalPredict = ({data, openModal, closeModal}) => {
 
-  console.log('data', data)
-
   return data.day ? <>
       <Modal show={openModal} onHide={closeModal} size='xl'>
         <Modal.Header closeButton>

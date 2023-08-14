@@ -14,12 +14,12 @@ const SideBar = () => {
   useEffect(() => {
     if (location.latitude !== 0 && location.longitude !== 0) {
       init();
-      if(currentWeather) {
-        console.log("Is Day?", currentWeather.current.is_day);
-        setIsDay(currentWeather.current.is_day);
-      }
     }
-  }, [location.latitude]);
+    if(currentWeather) {
+      console.log("Is Day?", currentWeather.current.is_day);
+      setIsDay(currentWeather.current.is_day);
+    }
+  }, [location.latitude, currentWeather]);
 
   const init = async () => {
     const response = await helpSendRequest(

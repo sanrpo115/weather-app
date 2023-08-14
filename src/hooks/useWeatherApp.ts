@@ -4,7 +4,7 @@ import { helpSendRequest } from '../helpers/helpSendRequest';
 export const useWeatherApp = () => {
   const [location, setLocation] = useState({latitude: 0, longitude: 0});
   const [currentWeather, setCurrentWeather] = useState();
-  const [newUbication, setNewUbication] = useState({});
+  const [newUbication, setNewUbication] = useState('');
   const [searchValue, setSearchValue] = useState({prev: '', new: ''});
   const [selectOptions, setSelectOptions] = useState([]);
 
@@ -43,6 +43,7 @@ export const useWeatherApp = () => {
 
   const consultCities = async () => {
     const options: any = [];
+    console.log("Consultando ciudades...");
     const response = await helpSendRequest(
       `${process.env.REACT_APP_ENDPOINT}/search.json?q=${searchValue.new}` , 
       { 'X-RapidAPI-Key': process.env.REACT_APP_X_RAPID_KEY, 'X-RapidAPI-Host': process.env.REACT_APP_X_RAPID_HOST },
@@ -54,6 +55,7 @@ export const useWeatherApp = () => {
         options.push({label: `${elm.name}, ${elm.region}, ${elm.country}`, value: `${elm.lat}, ${elm.lon}`,})
       });
       setSelectOptions(options);
+      console.log("Respuesta ciudades ::>", selectOptions);
     }
   }
 

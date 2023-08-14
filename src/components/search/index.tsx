@@ -8,12 +8,21 @@ import { WeatherAppContext } from '../../context/context';
 import { useContext } from 'react';
 
 const Search = () => {
-  const { handleSelectChange, selectOptions } = useContext(WeatherAppContext);
+  const { handleSelectChange, setNewUbication, getLocation, selectOptions } = useContext(WeatherAppContext);
   
   const promiseOptions = (_: any, callback: (options: any) => void) => {
     setTimeout(() => {
       callback(() => { return selectOptions });
-    }, 1000);
+    }, 2000);
+  }
+
+  const onChange = (value: any) => {
+    if (value !== null) {
+      console.log("click", value);
+      setNewUbication(value.value);
+    } else {
+      getLocation();
+    }
   }
 
   return (
@@ -39,9 +48,11 @@ const Search = () => {
               isSearchable={true}
               name="cities"
               loadOptions={promiseOptions}
+              onChange={onChange}
               onInputChange={(e:any) => {  
                 handleSelectChange(e)}
               }
+              
             />
           </div>
         </Col>

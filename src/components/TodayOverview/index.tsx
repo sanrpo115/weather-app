@@ -6,17 +6,21 @@ import './styles.scss';
 import NextDays from '../NextDays';
 
 const TodayOverview = () => {
-  const { setCurrentWeather, currentWeather, location } = useContext(WeatherAppContext);
+  const { setCurrentWeather, currentWeather, location, newUbication } = useContext(WeatherAppContext);
 
   useEffect(() => {
     if (location.latitude !== 0 && location.longitude !== 0) {
-      init();
+      init(`${location.latitude}, ${location.longitude}`);
     }
-  }, [location.latitude]);
+    if (newUbication !== '') {
+      console.log("Cambio ubicación...")
+      init(newUbication);
+    }
+  }, [location.latitude, newUbication]);
 
-  const init = async () => {
+  const init = async (loc: string) => {
     const response = await helpSendRequest(
-      `${process.env.REACT_APP_ENDPOINT}/current.json?q=${location.latitude},${location.longitude}&lang=${process.env.REACT_APP_LANG}` , 
+      `${process.env.REACT_APP_ENDPOINT}/current.json?q=${loc}&lang=${process.env.REACT_APP_LANG}` , 
       { 'X-RapidAPI-Key': process.env.REACT_APP_X_RAPID_KEY, 'X-RapidAPI-Host': process.env.REACT_APP_X_RAPID_HOST },
       'GET',
       {}
