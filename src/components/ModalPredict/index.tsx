@@ -17,14 +17,12 @@ const ModalPredict = ({data, openModal, closeModal}) => {
         </Modal.Header>
         <Modal.Body>
           <div className="data-container">
-            <div className="stats">
-              <Cards data={data.day}/>
-              <div className="day-condition">
-                <img className='icon' src={`https:${data.day.condition.icon}`} alt={data.day.condition.text} />
-                <h4>{data.day.condition.text}</h4>
-                <div className="astro-content">
-                  <Stages data={data.astro} fromModal={true} />
-                </div>
+            <Cards data={data.day}/>
+            <div className="day-condition">
+              <img className='icon' src={`https:${data.day.condition.icon}`} alt={data.day.condition.text} />
+              <h4>{data.day.condition.text}</h4>
+              <div className="astro-content">
+                <Stages data={data.astro} fromModal={true} />
               </div>
             </div>
           </div>

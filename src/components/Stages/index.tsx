@@ -9,14 +9,14 @@ const Stages = ({ data, fromModal }) => {
     const now = moment();
     const format = "hh:mm A";
     const timeAgo = moment(timeString, format)
-    const diff = moment.duration(now.diff(timeAgo))
-    return `Hace ${diff.hours()} ${diff.hours() > 1 ? 'horas' : 'hora' }`;
+    const diff = Math.abs(moment.duration(now.diff(timeAgo)).hours());
+    return `${!fromModal ? 'Hace' : 'Faltan'} ${diff} ${diff > 1 ? 'horas' : 'hora' }`;
   }
 
   return (
     <>
       <div className="stages">
-        {fromModal && <h3>Amanecer y Atardecer</h3>}
+        {!fromModal && <h3>Amanecer y Atardecer</h3>}
         <ul className="list-stages">
           <li className="stage">
             <div className="left-info">
@@ -26,9 +26,9 @@ const Stages = ({ data, fromModal }) => {
                 <span className="time">{data.sunrise}</span>
               </div>
             </div>
-            {fromModal && <div className="time-ago">
+            <div className="time-ago">
               {getHoursAgo(data.sunrise)}
-            </div>}
+            </div>
           </li>
           <li className="stage">
             <div className="left-info">
@@ -38,9 +38,9 @@ const Stages = ({ data, fromModal }) => {
                 <span className="time">{data.sunset}</span>
               </div>
             </div>
-            {fromModal && <div className="time-ago">
+            <div className="time-ago">
               {getHoursAgo(data.sunset)}
-            </div>}
+            </div>
           </li>
         </ul>
       </div>

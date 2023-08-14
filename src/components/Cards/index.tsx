@@ -5,6 +5,22 @@ const Cards = ({ data }) => {
 
   return (
     <div className={`stats-content ${data.maxtemp_c && 'five-ctn'}`}>
+      {data.maxtemp_c && <div className='card'>
+          <WiDirectionUpRight className='icon' />
+          <div className="info">
+            <p className='title'>Temperatura máxima</p>
+            <span className='data'>{data.maxtemp_c}° C</span>
+          </div>
+        </div>
+      }
+      {data.mintemp_c && <div className='card'>
+          <WiDirectionDownLeft className='icon' />
+          <div className="info">
+            <p className='title'>Temperatura mínima</p>
+            <span className='data'>{data.mintemp_c}° C</span>
+          </div>
+        </div>
+      }
       <div className='card'>
         <WiHumidity className='icon'/>
         <div className="info">
@@ -34,22 +50,6 @@ const Cards = ({ data }) => {
           <span className='data'>{data.uv}</span>
         </div>
       </div>
-      {data.maxtemp_c && <div className='card'>
-          <WiDirectionUpRight className='icon' />
-          <div className="info">
-            <p className='title'>Temperatura máxima</p>
-            <span className='data'>{data.maxtemp_c}° C</span>
-          </div>
-        </div>
-      }
-      {data.mintemp_c && <div className='card'>
-          <WiDirectionDownLeft className='icon' />
-          <div className="info">
-            <p className='title'>Temperatura mínima</p>
-            <span className='data'>{data.mintemp_c}° C</span>
-          </div>
-        </div>
-      }
     </div>
   )
 }
